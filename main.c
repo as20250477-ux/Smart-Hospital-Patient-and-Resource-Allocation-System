@@ -37,3 +37,40 @@ float discount[MAX_PATIENTS];
 float finalAmount[MAX_PATIENTS];
 
 int patientCount = 0;
+
+void registerPatient()  {printf("TODO: register patient\n");}
+void viewPriorityQueue(){printf("TODO: view priority queue\n");}
+void genarateReport()   {printf("TODO: generate report \n");}
+void saveBedStatus()    {printf("TODO: save bed status\n");}
+void loadBedStatus()    {printf("TODO: load bed status\n");}
+
+int main()
+{
+    loadBedStatus();
+    int choice;
+
+    do{
+        printf("\n---------------------------------");
+        printf("\n====  SMART HOSPITAL SYSTEM  ====\n");
+        printf("---------------------------------\n");
+        printf("1. Register New Patient        \n");
+        printf("2. View Patients by Priority   \n");
+        printf("3. Generate Reports            \n");
+        printf("4. Exit and Save               \n");
+        printf("---------------------------------\n");
+        printf("Enter choice : ");
+        scanf("%d",&choice);
+        printf("---------------------------------\n");
+
+        switch (choice)
+        {
+            case 1: registerPatient(); break;
+            case 2: viewPriorityQueue(); break;
+            case 3: genarateReport(); break;
+            case 4: saveBedStatus(); printf("Bed status saved. good bye!\n"); break;
+            default: printf("Invalid choice , Try again. \n");
+        }
+    }
+    while (choice != 4);
+    return 0;
+}
