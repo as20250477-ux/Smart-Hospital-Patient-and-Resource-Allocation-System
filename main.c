@@ -39,7 +39,7 @@ float finalAmount[MAX_PATIENTS];
 int patientCount = 0;
 
 void registerPatient();
-void viewPriorityQueue(){printf("TODO: view priority queue\n");}
+void viewPriorityQueue();
 void genarateReport()   {printf("TODO: generate report \n");}
 void saveBedStatus()    {printf("TODO: save bed status\n");}
 void loadBedStatus()    {printf("TODO: load bed status\n");}
@@ -207,4 +207,25 @@ void printBill(int i)
     printf("Estimated Waiting Time  : %.2f mins\n", waitTime[i]);
     printf("===================================================================\n");
 
+}
+
+void viewPriorityQueue()
+{
+    int order[MAX_PATIENTS];
+    for (int i = 0; i<patientCount; i++) order[i] = i;
+    for (int a = 0; a<patientCount -1; a++){
+        for (int b = 0; b<patientCount -1 -a; b++){
+            if (urgencyLevel[order[b]] < urgencyLevel[order[b+1]]){
+                int temp = order[b];
+                order[b] = order[b+1];
+                order[b+1] = temp;
+            }
+        }
+    }
+
+    printf("\n     --- Patients by Priority --- \n");
+    for (int k = 0; k < patientCount; k++){
+        int i = order[k];
+        printf("%d. %s (Level %d)\n", k + 1 , patientName[i],urgencyLevel[i]);
+    }
 }
