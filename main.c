@@ -132,9 +132,40 @@ void registerPatient()
         daysAdmitted[i] = 0;
         bedNunber[i] = -1;
     }
-    void calculateBill(int i){printf("TODO: view calculate bill\n");}
+    void calculateBill(int i);
     void printBill(int i){printf("TODO: view print bill\n");}
     void appendPatientRecord(int i){printf("TODO: append patient record\n");}
 
     patientCount++;
+}
+void calculateBill(int i)
+{
+    int s = specialtyChoice[i] - 1;
+
+    waitTime[i] = queueCount[s] * consultTime[s];
+    queueCount[s]++;
+
+    if (urgencyLevel[i] == 1)
+        surcharge[i] = 0;
+    else if (urgencyLevel[i == 2])
+        surcharge[i] = 0.20*baseFee[s];
+    else
+        surcharge[i] = 0.5 *baseFee[s];
+
+    if (isAdmitted[i] == 1){
+        int w = wardChoice[i] - 1;
+        wardCost[i] = daysAdmitted[i]*wardDailyRate[w];
+    }
+    else {
+        wardCost[i] = 0;
+    }
+
+    grossTotal[i] = baseFee[s] + surcharge[i] + wardCost[i];
+
+    if (patientAge[i] < 5 || patientAge[i] > 65)
+        discount[i] = grossTotal[i]*0.15;
+    else
+        discount[i] = 0;
+
+    finalAmount[i] = grossTotal[i] - discount[i];
 }
