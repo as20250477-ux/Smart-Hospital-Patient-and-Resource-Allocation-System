@@ -133,7 +133,7 @@ void registerPatient()
         bedNunber[i] = -1;
     }
     void calculateBill(int i);
-    void printBill(int i){printf("TODO: view print bill\n");}
+    void printBill(int i);
     void appendPatientRecord(int i){printf("TODO: append patient record\n");}
 
     patientCount++;
@@ -168,4 +168,43 @@ void calculateBill(int i)
         discount[i] = 0;
 
     finalAmount[i] = grossTotal[i] - discount[i];
+}
+
+void printBill(int i)
+{
+    int s = specialtyChoice[i] - 1;
+
+    printf("\n==============================================================\n");
+    printf("          ---SMART HOSPITAL ADMISSION AND BILL---   \n");
+    printf("--------------------------------------------------------------\n");
+    printf("Patient ID         : PAT-%d\n", 1000 + patientCount + 1);
+    printf("Patient Name       : %s\n",patientName[i]);
+    printf("Age                : %d Years",patientAge[i]);
+
+    if (discount[i]>0)
+        printf("(15%% Subsidy Eligible)");
+    printf("\n");
+    printf("Specialty          : %s\n",specialtyName[s]);
+
+    if (isAdmitted[i] == 1){
+        int w = wardChoice[i] - 1;
+        printf("Assigned Ward      : %s (Bed #%02d)\n",wardName[w],bedNunber[i]+1);
+    }
+    else{
+        printf("Assigned Ward      : Outpatient (OPD)\n");
+    }
+
+    printf("Urgency Level      : Level %d\n", urgencyLevel[i]);
+    printf("------------------------------------------------------------------\n");
+    printf("Base Consultation Fee   : LKR %.2f\n", baseFee[s]);
+    printf("Emergency Surcharge     : LKR %.2f\n", surcharge[i]);
+    printf("ward Stay Cost (%d Days): LKR %.2f\n", daysAdmitted[i], wardCost[i]);
+    printf("-------------------------------------------------------------------\n");
+    printf("Gross Total Bill        : LKR %.2f\n", grossTotal[i]);
+    printf("Age Subsidy Discount    : LKR -%.2f\n", discount[i]);
+    printf("-------------------------------------------------------------------\n");
+    printf("Final Payable Amount    : LKR %.2f\n", finalAmount[i]);
+    printf("Estimated Waiting Time  : %.2f mins\n", waitTime[i]);
+    printf("===================================================================\n");
+
 }
