@@ -103,6 +103,10 @@ void registerPatient()
     printf("Urgency level(1.Normal,2.Urgent,3.Critical):");
     scanf("%d",&urgencyLevel[i]);
 
+    printf("\nSelect Specialty:\n");
+    for (int s = 0; s < NUM_SPECIALTIES; s++)
+       printf("  %d. %s (LKR %.2f)\n", s + 1, specialtyName[s], baseFee[s]);
+
     printf("Specialty ID (1-4)                         :");
     scanf("%d",&specialtyChoice[i]);
 
