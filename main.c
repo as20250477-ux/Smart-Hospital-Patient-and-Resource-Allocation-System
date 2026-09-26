@@ -195,17 +195,17 @@ void printBill(int i)
     }
 
     printf("Urgency Level      : Level %d\n", urgencyLevel[i]);
-    printf("------------------------------------------------------------------\n");
+    printf("--------------------------------------------------------------\n");
     printf("Base Consultation Fee   : LKR %.2f\n", baseFee[s]);
     printf("Emergency Surcharge     : LKR %.2f\n", surcharge[i]);
     printf("ward Stay Cost (%d Days): LKR %.2f\n", daysAdmitted[i], wardCost[i]);
-    printf("-------------------------------------------------------------------\n");
+    printf("--------------------------------------------------------------\n");
     printf("Gross Total Bill        : LKR %.2f\n", grossTotal[i]);
     printf("Age Subsidy Discount    : LKR -%.2f\n", discount[i]);
-    printf("-------------------------------------------------------------------\n");
+    printf("--------------------------------------------------------------\n");
     printf("Final Payable Amount    : LKR %.2f\n", finalAmount[i]);
     printf("Estimated Waiting Time  : %.2f mins\n", waitTime[i]);
-    printf("===================================================================\n");
+    printf("==============================================================\n");
 
 }
 
