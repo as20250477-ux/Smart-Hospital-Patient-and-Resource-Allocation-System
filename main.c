@@ -114,6 +114,10 @@ void registerPatient()
     scanf("%d", &isAdmitted[i]);
 
     if (isAdmitted[i] == 1){
+        printf("\nSelect Ward:\n");
+        for (int w = 0; w < NUM_WARDS; w++)
+            printf("  %d. %s (LKR %.2f/day)\n", w + 1, wardName[w], wardDailyRate[w]);
+
         printf("Ward ID (1-4)                              :");
         scanf("%d",&wardChoice[i]);
         printf("Days admitted                              :");
