@@ -147,7 +147,7 @@ void calculateBill(int i)
 
     if (urgencyLevel[i] == 1)
         surcharge[i] = 0;
-    else if (urgencyLevel[i == 2])
+    else if (urgencyLevel[i] == 2)
         surcharge[i] = 0.20*baseFee[s];
     else
         surcharge[i] = 0.5 *baseFee[s];
