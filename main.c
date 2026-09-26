@@ -94,25 +94,25 @@ void registerPatient()
 
     int i = patientCount;
 
-    printf("Enter patient name :");
+    printf("Enter patient name                         :");
     scanf(" %[^\n]", patientName[i]);
 
-    printf("Enter patient age  :");
+    printf("Enter patient age                          :");
     scanf("%d", &patientAge[i]);
 
-    printf("Urgency level \n(1.Normal,2.Urgent,3.Critical):");
+    printf("Urgency level(1.Normal,2.Urgent,3.Critical):");
     scanf("%d",&urgencyLevel[i]);
 
-    printf("Specialty ID (1-4) :");
+    printf("Specialty ID (1-4)                         :");
     scanf("%d",&specialtyChoice[i]);
 
-    printf("Admitted to ward? (1 = Yes , 0 = No ):");
+    printf("Admitted to ward? (1 = Yes , 0 = No )      :");
     scanf("%d", &isAdmitted[i]);
 
     if (isAdmitted[i] == 1){
-        printf("Ward ID (1-4):");
+        printf("Ward ID (1-4)                              :");
         scanf("%d",&wardChoice[i]);
-        printf("Days admitted:");
+        printf("Days admitted                              :");
         scanf("%d",&daysAdmitted[i]);
 
         int w = wardChoice[i] - 1;
