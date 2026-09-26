@@ -132,9 +132,9 @@ void registerPatient()
         daysAdmitted[i] = 0;
         bedNunber[i] = -1;
     }
-    void calculateBill(int i);
-    void printBill(int i);
-    void appendPatientRecord(int i);
+    calculateBill(i);
+    printBill(i);
+    appendPatientRecord(i);
 
     patientCount++;
 }
