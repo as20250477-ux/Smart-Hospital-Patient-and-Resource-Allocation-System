@@ -41,8 +41,8 @@ int patientCount = 0;
 void registerPatient();
 void viewPriorityQueue();
 void genarateReport();
-void saveBedStatus()    {printf("TODO: save bed status\n");}
-void loadBedStatus()    {printf("TODO: load bed status\n");}
+void saveBedStatus();
+void loadBedStatus();
 
 int main()
 {
@@ -134,7 +134,7 @@ void registerPatient()
     }
     void calculateBill(int i);
     void printBill(int i);
-    void appendPatientRecord(int i){printf("TODO: append patient record\n");}
+    void appendPatientRecord(int i);
 
     patientCount++;
 }
@@ -262,4 +262,36 @@ void genarateReport()
 
     if (patientCount > 0)
         printf("\nHighest-paying patient: %s (LKR %.2f)\n",patientName[highest],finalAmount[highest]);
+}
+
+void saveBedStatus()
+{
+    FILE *fp = fopen("beds_status.txt", "w");
+    if (fp == NULL) return;
+
+    for (int w = 0; w < NUM_WARDS; w++) {
+        for (int b = 0; b < wardCapacity[w]; b++)
+            fprintf(fp, "%d ", bedOccupancy[w][b]);
+        fprintf(fp, "\n");
+    }
+    fclose(fp);
+}
+
+void loadBedStatus()
+{
+    FILE *fp = fopen("beds_status.txt", "r");
+    if (fp == NULL) return;
+
+    for (int w = 0; w < NUM_WARDS; w++)
+        for (int b = 0; b < wardCapacity[w]; b++)
+            fscanf(fp, "%d", &bedOccupancy[w][b]);
+    fclose(fp);
+}
+
+void appendPatientRecord(int i)
+{
+    FILE *fp = fopen("patient_records.txt", "a");
+    if (fp == NULL) return;
+    fprintf(fp, "PAT-%d, %s, LKR %.2f\n", 1000 + patientCount + 1, patientName[i], finalAmount[i]);
+    fclose(fp);
 }
